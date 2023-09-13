@@ -1,5 +1,4 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAME
 
 class Game
 {
