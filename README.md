@@ -1,2 +1,2 @@
-# crossy-road-ce
-Crossy road made for the TI-84 Plus CE for NCEA
+# Crossy Road CE
+A simplified version of the game [crossy road](https://en.wikipedia.org/wiki/Crossy_Road) made for the TI 84 Plus CE graphing calculator. This project is also being used for NCEA Level 3 DTS. You can view the project management side of it [here](https://github.com/users/MaximilianMcC/projects/4).
