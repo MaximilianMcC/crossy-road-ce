@@ -10,7 +10,7 @@ COMPRESSED = NO
 CFLAGS = -Wall -Wextra -Oz
 CXXFLAGS = -Wall -Wextra -Oz
 
-SRC = src/main.cpp
+SRC = src/main.cpp src/game.h
 
 # ----------------------------
 

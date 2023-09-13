@@ -1,16 +1,16 @@
 #include <ti/screen.h>
-#include <ti/getcsc.h>
-#include <stdlib.h>
+#include <debug.h>
+#include "game.h"
 
 int main()
 {
-	// Hello world
+	// Clear the screen
 	os_ClrHome();	
-	os_PutStrFull("Hello, world!");
 
-	
+	// Create, then run the game
+	Game game;
+	game.start();
 
-	// Exit after a key is pressed
-	while (!os_GetCSC());
+	// Exit
 	return 0;
 }
