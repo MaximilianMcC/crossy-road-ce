@@ -1,6 +1,6 @@
 #include <ti/screen.h>
 #include <debug.h>
-#include "game.h"
+#include "game.cpp"
 
 int main()
 {
