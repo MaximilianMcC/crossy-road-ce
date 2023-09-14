@@ -2,6 +2,7 @@
 #include <ti/getcsc.h>
 #include <debug.h>
 #include "player.cpp"
+#include "gfx/gfx.h" // Created using `make gfx`
 
 #ifndef GAME
 
@@ -15,6 +16,7 @@ public:
 		// Setup graphics stuff
 		gfx_Begin();
 		gfx_SetPalette(global_palette, sizeof_global_palette, 0);
+		gfx_SetTransparentColor(0);
 		dbg_printf("[Crossy Road] Starting game rn.\n");
 
 
@@ -38,7 +40,8 @@ public:
 
 
 			// Render everything in the game
-			gfx_FillScreen(5);
+			gfx_FillScreen(2);
+			gfx_Sprite(blue, 0, 0);
 			player.draw();
 			gfx_SwapDraw();
 		}

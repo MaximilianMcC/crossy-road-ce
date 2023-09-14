@@ -1,7 +1,7 @@
 palettes:
   - name: global_palette
     fixed-entries:
-      - color: {index: 0, r: 255, g: 0, b: 128}    # Pink
+      - color: {index: 0, r: 255, g: 0, b: 128}    # Pink - will be replaced with transparent
       - color: {index: 1, r: 255, g: 255, b: 255}  # White
       - color: {index: 2, r: 0, g: 0, b: 0}        # Black
     images: automatic
@@ -12,6 +12,7 @@ converts:
     transparent-color-index: 0
     images:
       - blue.png
+      - emoji.png
 
 outputs:
   - type: c

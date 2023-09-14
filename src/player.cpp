@@ -23,10 +23,8 @@ public:
 	// Draw/render the player
 	void draw()
 	{
-		// gfx_SetTextFGColor(123);
-		// gfx_PrintStringXY("i am the player (real)", x, y);
-		gfx_Sprite(blue, 0, 0);
-		// gfx_TransparentSprite_NoClip(test, x, y);
+		// gfx_Sprite(emoji, x, y);
+		gfx_TransparentSprite(emoji, x, y);
 	}
 
 private:

@@ -8,4 +8,4 @@ The end goal is to get a game that looks like crossy road. Because I only have b
 - Run `make` for normal compiling
 - Run `make debug` for compiling with debugging features like CEmu console
 - Run `make gfx` to convert graphics to binary
-- Anything that should be transparent needs to be `#ff0080`/`255, 0, 128`
+- To make a part of an image make the part that you want transparent `#ff0080`/`255, 0, 128`
