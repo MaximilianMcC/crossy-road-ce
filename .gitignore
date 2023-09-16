@@ -1,10 +1,15 @@
+# Generic C stuff
 obj/
 bin/
+
+# CEdev stuff
 src/gfx/*.c
 src/gfx/*.h
 src/gfx/*.8xv
+src/gfx/*.lst
 .DS_Store
 convimg.out
 
+# Development stuff
 .vscode
 *test*
