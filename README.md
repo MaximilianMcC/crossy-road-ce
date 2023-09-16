@@ -9,3 +9,24 @@ The end goal is to get a game that looks like crossy road. Because I only have b
 - Run `make debug` for compiling with debugging features like CEmu console
 - Run `make gfx` to convert graphics to binary
 - To make a part of an image make the part that you want transparent `#ff0080`/`255, 0, 128`
+
+### All textures/tiles into stuff:
+| Texture Name | Texture Count | Sprite Sheet Index | 
+|--------------|---------------|--------------------|
+| grass | 1 | `0x0` - `0000` |
+| grass | 2 | `0x1` - `1000` |
+| tree | 1 | `0x2` - `0100` |
+| tree | 2 | `0x3` - `1100` |
+| rock | 1 | `0x4` - `0010` |
+| rock | 2 | `0x5` - `1010` |
+| rock | 3 | `0x6` - `0110` |
+| lillypad | 1 | `0x7` - `1110` |
+| lillypad | 2 | `0x8` - `0001` |
+| water | 1 | `0x9` - `1001` |
+
+### Tile binary bit structure thing
+| Bit index | What it is | Example |
+|-----------|------------|---------|
+| 1 (**0**00000) | Tile has collisions or not | `01` no collisions, grass or something |
+| 2 (0**0**0000) | Tile can kill the player or not | `1` water kills the player |
+| 3-6 (00**0000**) | Tile sprite sheet index | `0010` is the 4th sprite |
