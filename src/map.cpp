@@ -1,5 +1,6 @@
 #include <graphx.h>
 #include <time.h>
+#include <debug.h>
 
 #ifndef MAP
 
@@ -13,7 +14,9 @@ class Map
 public:
 	
 
-	//todo the player can go backwards but cant go off screen/scroll screen backwards.
+	// TODO: the player can go backwards but cant go off screen/scroll screen backwards.
+
+	// TODO: Use const more
 
 	Map()
 	{
@@ -36,15 +39,18 @@ public:
 	}
 
 	// Add a row to the map
-	void addRow(uint8_t previousRow[ROWS])
+	void addRow()
 	{
 		// TODO: Use the previous row to change generation. For example, if the previous row was water, also make this water, but if there were 5 previous waters make this land
 
-		uint8_t row[ROWS];
+		// Make an empty row
+		uint8_t row[ROWS] = { };
+		
 
 		// Determine if the whole row is going to be water or not (20% chance)
 		bool water = false;
-		if (percentage(20)) water = true;
+		if (percentage(100)) water = true;
+		dbg_printf("Water: %d\n", water);
 
 		// Loop through every tile in the row
 		// TODO: Use uint8/char instead of short because we dont need all that space and stuff
@@ -57,23 +63,23 @@ public:
 			// Check for if the entire row is water and make the tile water
 			if (water)
 			{
-				// No collision (1 = 1)
+				dbg_printf("Making water\n");
+
+				// No collision (0 = 1)
+				tile |= (1 << 0);
+
+				// Can kill the player (1 = 1)
 				tile |= (1 << 1);
 
-				// Can kill the player (2 = 1)
-				tile |= (1 << 2);
+				// Texture index of 9 (2-5 = 1001)
+				tile |= (0x9 << 2);
 
-				// Texture index of 9 (3-6 = 1001)
-				//! Clearing will slow down, but its barely noticeable. If speed is ABSOLUTELY needed then remove, otherwise keep because its easier to read
-				//? `~` flips a bit. for example, 001 flipped would be 100. for setting to 0 can also use (0 << index), but apparently ~(1 << index) is standard practice
-				tile |= (1 << 3);
-				tile &= ~(1 << 4);
-				tile &= ~(1 << 5);
-				tile |= (1 << 6);
-
-				// Make the next tile
+				// Add the row to the tile then make the next tile
+				row[i] = tile;
 				continue;
 			}
+
+			dbg_printf("Finished generating water outside of loop\n");
 
 			// Check for if the current tile is going to have an obstacle
 			// chance for it to be is higher if closer to the edges (80% for edge, 40% for not edge)
@@ -88,9 +94,28 @@ public:
 			// Check for if the tile is an obstacle, then give it a texture/obstacle type
 			if (obstacle)
 			{
-				
+				dbg_printf("Making obstacle\n");
+				// Get a random sprite index from the lookup table
+				// TODO: Remove the lookup table
+				const uint8_t spriteCount = 7;
+				const uint8_t spriteIndex = rand() % (spriteCount - 1);
+
+				// Set the bits to the index
+				tile |= (spriteIndex << 3);
 			}
+
+			// Add the completed tile to the row
+			row[i] = tile;
 		}
+
+
+
+		//!DEBUG: Print the row
+		for (size_t i = 0; i < ROWS; i++)
+		{
+			printBinary(row[i]);
+		}
+		
 		
 	}
 
@@ -107,10 +132,20 @@ private:
 	bool percentage(short percentage)
 	{
 		// Get a random number from 1-100
-		int chance = (rand() % 100) + 1;
+		int chance = rand() % 100;
 		return chance <= percentage;
-	}
+	}	
 
+
+
+	//! debug stuff remove when done!!!
+	void printBinary(char value) {
+
+	    for (int i = 7; i >= 0; --i) {
+	        dbg_printf("%c", (value & (1 << i)) ? '1' : '0');
+    	}
+		dbg_printf("\n");
+	}
 };
 
 #endif
