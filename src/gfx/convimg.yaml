@@ -11,8 +11,14 @@ converts:
     palette: global_palette
     transparent-color-index: 0
     images:
-      - blue.png
       - emoji.png
+      - grass1.png
+      - grass2.png
+      - rock1.png
+      - rock2.png
+      - tree1.png
+      - tree2.png
+      - water1.png
 
 outputs:
   - type: c
