@@ -10,7 +10,7 @@ This is currently the second version of the project. In the first version I mass
 - `make gfx` to compile images to binary
 - `make` for code to be ran on hardware
 - `make debug` for emulator code
-- Sometimes `./bin` and `./obj` need to be removed to compile again. Issue with the compiler and there is nothing I can do about it.
+- If debugging versions aren't updating, do `make clean` to remove all compiled stuff
 
 ### Tiles
 To be efficient, tiles are stored as a single hexadecimal number. Below is the lookup table for all of the tiles:
@@ -24,3 +24,4 @@ To be efficient, tiles are stored as a single hexadecimal number. Below is the l
 | Tree  | `0x5` | ✅        |
 | Water | `0x6` | ❌        |
 | Road  | `0x7` | ❌        |
+Tile map index starts at 0 and is automatically carried on to the next column
