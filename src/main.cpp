@@ -9,7 +9,7 @@ int main()
 
 	// Create, then run the game
 	Game game;
-	game.start();
+	game.run();
 
 	// Exit
 	return 0;
