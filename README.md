@@ -11,3 +11,16 @@ This is currently the second version of the project. In the first version I mass
 - `make` for code to be ran on hardware
 - `make debug` for emulator code
 - Sometimes `./bin` and `./obj` need to be removed to compile again. Issue with the compiler and there is nothing I can do about it.
+
+### Tiles
+To be efficient, tiles are stored as a single hexadecimal number. Below is the lookup table for all of the tiles:
+| Name  | Index | Collision |
+|-------|-------|:---------:|
+| Grass | `0x0` | ❌        |
+| Grass | `0x1` | ❌        |
+| Rock  | `0x2` | ✅        |
+| Rock  | `0x3` | ✅        |
+| Tree  | `0x4` | ✅        |
+| Tree  | `0x5` | ✅        |
+| Water | `0x6` | ❌        |
+| Road  | `0x7` | ❌        |

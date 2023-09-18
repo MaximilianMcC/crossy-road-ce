@@ -1,24 +1,28 @@
 palettes:
   - name: global_palette
     fixed-entries:
-      - color: {index: 0, r: 255, g: 0, b: 128}    # Pink - will be replaced with transparent
+      - color: {index: 0, r: 0, g: 0, b: 0}        # Black
       - color: {index: 1, r: 255, g: 255, b: 255}  # White
-      - color: {index: 2, r: 0, g: 0, b: 0}        # Black
+      - color: {index: 2, r: 255, g: 0, b: 128}    # Pink - will be replaced with transparent (ff0080)
     images: automatic
 
 converts:
+
+  # Tileset of tiles for the map
+  - name: tileset
+    palette: global_palette
+    tilesets:
+      tile-width: 16
+      tile-height: 16
+      images:
+        - tileset.png
+
+  # Other stuff
   - name: sprites
     palette: global_palette
-    transparent-color-index: 0
+    transparent-color-index: 2
     images:
-      - emoji.png
-      - grass1.png
-      - grass2.png
-      - rock1.png
-      - rock2.png
-      - tree1.png
-      - tree2.png
-      - water1.png
+      - player.png
 
 outputs:
   - type: c
@@ -26,4 +30,5 @@ outputs:
     palettes:
       - global_palette
     converts:
+      - tileset
       - sprites
