@@ -12,8 +12,8 @@ converts:
   - name: tileset
     palette: global_palette
     tilesets:
-      tile-width: 16
-      tile-height: 16
+      tile-width: 32
+      tile-height: 32
       images:
         - tileset.png
 
