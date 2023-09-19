@@ -11,6 +11,9 @@ int main()
 	Game game;
 	game.run();
 
+	// Get rid of any crap that may have been left behind when exiting
+	os_ClrHome();
+
 	// Exit
 	return 0;
 }

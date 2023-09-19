@@ -10,14 +10,25 @@ extern unsigned char tilemapMap[];
 
 
 // Tile map settings and stuff
-#define TILE_SIZE 16
+#define TILE_SIZE 32
 
 // TODO: Play around with these until something good pops up. Maybe do some sus maths
-#define TILEMAP_WIDTH 32
-#define TILEMAP_HEIGHT 25
-#define TILEMAP_DRAW_WIDTH  20
-#define TILEMAP_DRAW_HEIGHT 14
+//☝️ Original crossy road has 9 available spaces. to move, then the outside is always tree. 11 total spaces.
+#define TILEMAP_WIDTH 11
+#define TILEMAP_HEIGHT 20
+#define TILEMAP_DRAW_WIDTH 11 // How many to draw on x
+#define TILEMAP_DRAW_HEIGHT 8 // How many to draw on y
 
+
+// All of the tiles in the tilemap
+#define GRASS_TILE_1 0x0
+#define GRASS_TILE_2 0x1
+#define ROCK_TILE_1 0x2
+#define ROCK_TILE_2 0x3
+#define TREE_TILE_1 0x4
+#define TREE_TILE_2 0x5
+#define WATER_TILE_1 0x6
+#define ROAD_TILE_1 0x7
 
 
 
@@ -32,26 +43,33 @@ public:
 		// so that the map generation can be random
 		srand(time(NULL));
 
-		// Initialize the tilemap structure
+		
+		// Initialize the tilemap
 		tilemap.map = tilemapMap;
 		tilemap.tiles = tileset_tiles;
-		tilemap.type_width = gfx_tile_16_pixel;
-		tilemap.type_height = gfx_tile_16_pixel;
+
+		// Set the tilemap tile size
+		tilemap.type_width = gfx_tile_32_pixel;
+		tilemap.type_height = gfx_tile_32_pixel;
 		tilemap.tile_height = TILE_SIZE;
 		tilemap.tile_width = TILE_SIZE;
+
+		// Set the tilemap dimensions
 		tilemap.draw_height = TILEMAP_DRAW_HEIGHT;
 		tilemap.draw_width = TILEMAP_DRAW_WIDTH;
 		tilemap.height = TILEMAP_HEIGHT;
 		tilemap.width = TILEMAP_WIDTH;
-		tilemap.y_loc = -16; // 1 tile above the screen
-		tilemap.x_loc = 0;
+
+		// Make everything in the centre on the X, and at the bottom on the Y
+		tilemap.y_loc = 0;
+		tilemap.x_loc = -16;
 	}
 
 	// Draw the map to the screen
 	void render()
 	{
 		// Draw the tilemap
-		gfx_Tilemap_NoClip(&tilemap, 0, 0);
+		gfx_Tilemap(&tilemap, 0, 0);
 	}
 
 

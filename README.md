@@ -24,4 +24,5 @@ To be efficient, tiles are stored as a single hexadecimal number. Below is the l
 | Tree  | `0x5` | ✅        |
 | Water | `0x6` | ❌        |
 | Road  | `0x7` | ❌        |
-Tile map index starts at 0 and is automatically carried on to the next column
+
+All tiles are 32x32. At any give time 11 tiles are visible on x, and 8 are visible on y

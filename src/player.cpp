@@ -27,7 +27,7 @@ private:
 	// Move the player
 	void movement(uint8_t key)
 	{
-
+		// if (key == sk_0) dbg_printf("0");
 	}
 
 };
