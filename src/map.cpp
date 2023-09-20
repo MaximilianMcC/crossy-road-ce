@@ -75,7 +75,7 @@ public:
 	}
 
 
-	// Add a row to the map, and remove the previous ones
+	// Add a row to the top of the map, and shift everything back/over
 	void addRow()
 	{
 		// Default empty row
@@ -127,6 +127,16 @@ public:
 			// Overwrite the middle tile to make there always a guaranteed chance for there to be a clean path to the next row
 			row[5] = tileChoice(GRASS_TILE_1, GRASS_TILE_2);
 		}
+	
+		// Shift all of the existing rows down by 1
+		//! idk what this doing
+		for (uint8_t i = (((ROWS * COLUMNS) - ROWS) - 1); i >= ROWS; i--)
+		{
+			map[i] = map[i - ROWS];
+		}
+
+		// Add the newly generated row to the top of the map
+		setRow(row, 0);
 	}
 
 private:
@@ -142,9 +152,24 @@ private:
 	{
 		// 50% chance to spawn each tile
 		return percentage(50) ? tile1 : tile2;
-
-		// TODO: Make method overload for more than 2
 	}
+
+	// Set the row of the tilemap with another (returns the previous row)
+	const uint8_t* setRow(uint8_t row[], uint8_t yIndex)
+	{
+		uint8_t previousRow[ROWS] = { UNKNOWN_TILE };
+
+		for (uint8_t i = (yIndex * ROWS); i < ROWS; i++)
+		{
+			// Set both the previous row, and the new row
+			previousRow[i] = map[i];
+			map[i] = row[i];
+		}
+		
+		// Return the row that used to be there before it was overwritten
+		return previousRow;
+	}
+
 };
 
 #endif

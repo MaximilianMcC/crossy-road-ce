@@ -28,7 +28,6 @@ public:
 		
 		// Create a new map
 		Map map;
-		map.addRow();
 
 
 		// Main game loop
@@ -36,6 +35,8 @@ public:
 		{
 			// Get the player key input
 			key = os_GetCSC();
+
+			if (key == sk_Up) map.addRow();
 
 
 			// Render everything
