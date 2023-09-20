@@ -14,15 +14,15 @@ This is currently the second version of the project. In the first version I mass
 
 ### Tiles
 To be efficient, tiles are stored as a single hexadecimal number. Below is the lookup table for all of the tiles:
-| Name  | Index | Collision |
-|-------|-------|:---------:|
-| Grass | `0x0` | ❌        |
-| Grass | `0x1` | ❌        |
-| Rock  | `0x2` | ✅        |
-| Rock  | `0x3` | ✅        |
-| Tree  | `0x4` | ✅        |
-| Tree  | `0x5` | ✅        |
-| Water | `0x6` | ❌        |
-| Road  | `0x7` | ❌        |
-
-All tiles are 32x32. At any give time 11 tiles are visible on x, and 8 are visible on y
+| Name     | Index | Collision | Size  |
+|----------|-------|:---------:|-------|
+| Unknown  | `0x0` | ❌        | 32x32 |
+| Grass    | `0x1` | ❌        | 32x32 |
+| Grass    | `0x2` | ❌        | 32x32 |
+| Rock     | `0x3` | ✅        | 32x32 |
+| Rock     | `0x4` | ✅        | 32x32 |
+| Tree     | `0x5` | ✅        | 32x32 |
+| Tree     | `0x6` | ✅        | 32x32 |
+| Water    | `0x7` | ❌        | 32x32 |
+| Debug    | `0x8` | ❌        | 32x32 |
+| Road     | `0x9` | ❌        | 32x32 |
