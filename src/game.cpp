@@ -28,7 +28,7 @@ public:
 		
 		// Create a new map
 		Map map;
-
+		map.addRow();
 
 
 		// Main game loop
